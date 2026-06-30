@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northline Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Northline</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Design &amp; Development</p>
+          <h1>We build clear, thoughtful digital experiences.</h1>
+          <p class="hero-text">
+            Northline Studio helps small teams launch polished websites and products
+            with a focus on usability, performance, and clean design.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Start a project</a>
+            <a href="#work" class="btn btn-secondary">View our work</a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+            alt="Bright modern workspace with desks and natural light"
+            width="1200"
+            height="800"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Selected Work</p>
+          <h2>Recent projects</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+                alt="Latte art on a wooden table in a coffee shop"
+                width="800"
+                height="533"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Harbor Coffee</h3>
+              <p>A responsive storefront and brand site for a local roaster.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"
+                alt="Open notebook and pen on a desk"
+                width="800"
+                height="533"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Field Notes</h3>
+              <p>A minimal publishing platform for independent writers.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
+                alt="Doctor using a tablet in a clinic"
+                width="800"
+                height="533"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Atlas Health</h3>
+              <p>A patient-friendly dashboard for a growing clinic network.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section section-muted">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">What We Do</p>
+          <h2>Services built around clarity</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">
+            <span class="feature-number">01</span>
+            <h3>Web Design</h3>
+            <p>Layouts, typography, and visual systems that feel calm and intentional.</p>
+          </div>
+          <div class="feature">
+            <span class="feature-number">02</span>
+            <h3>Front-end Build</h3>
+            <p>Semantic HTML and maintainable CSS that works across devices and browsers.</p>
+          </div>
+          <div class="feature">
+            <span class="feature-number">03</span>
+            <h3>Content Strategy</h3>
+            <p>Clear messaging and page structure so visitors know what to do next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about-grid">
+        <figure class="about-media">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
+            alt="Design team collaborating around a laptop"
+            width="900"
+            height="600"
+            loading="lazy"
+          >
+        </figure>
+        <div class="about-content">
+          <p class="eyebrow">About Us</p>
+          <h2>A small studio with a simple approach.</h2>
+        <div class="about-copy">
+          <p>
+            We believe good websites should be easy to read, fast to load, and
+            straightforward to maintain. Our process is collaborative, lightweight,
+            and focused on what matters most to your audience.
+          </p>
+          <p>
+            Whether you need a landing page, a product site, or a full refresh,
+            we keep the work practical and the result polished.
+          </p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <div class="container contact-inner">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s talk about your next project.</h2>
+          <p>Tell us what you’re building and we’ll reply within one business day.</p>
+        </div>
+        <form class="contact-form">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Your name">
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com">
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="What can we help with?"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Northline Studio. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+</body>
+</html>
