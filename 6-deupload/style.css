@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* My Classes */
+.my-text-primary{
+    color: #651FFF;
+}
+
+h2{
+    font-weight: 700;
+}
+
+/* Header */
+header{
+    background-color: #ffffff;
+}
+
+/* Banner */
+.banner{
+    padding: 100px 0px;
+    background-color: #EBE5FA;
+}
+
+.banner h1{
+    
+    font-weight:700;
+    line-height: 60px;
+}
+
+/* Hero */
+.hero{
+    padding: 100px 0px;
+}
+
+/* Lightning */
+.lightning{
+    padding: 100px 0px;
+}
+
+.lightning-wrapper > div > div > div{
+    background-color: #651FFF;
+    padding: 60px 30px;
+    color: #ffffff;
+    border-radius: 30px;
+}
+
+.lightning-wrapper > div > div > div a{
+    color: #ffffff;
+}
