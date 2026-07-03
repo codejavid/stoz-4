@@ -55,3 +55,61 @@ header{
 .lightning-wrapper > div > div > div a{
     color: #ffffff;
 }
+
+/* Team */
+.team{
+    padding: 100px 0px;
+}
+
+.team-wrapper > div > div > div{
+    text-align: center;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.team-wrapper > div > div:nth-child(1) > div{
+    background-color: #FFF7ED;
+}
+
+.team-wrapper > div > div:nth-child(2) > div{
+    background-color: #E0F7FA;
+}
+
+.collab{
+    background-color: #ECECFE;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+/* Privacy */
+
+.privacy{
+    padding: 100px 0px;
+}
+
+/* Pricing */
+.pricing{
+    padding: 100px 0px;
+    background:linear-gradient(to bottom, #00E5FF 55%, #ffffff 45%);
+}
+
+.pricing-wrapper > div > div:nth-child(1) > div{
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+
+.pricing-wrapper > div > div:nth-child(2) > div{
+ background-color: #651FFF;
+ color: #ffffff;
+ padding: 50px;
+}
+
+
+@media (min-width: 992px) {
+    .pricing-wrapper > div > div:nth-child(2) > div{
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+       }
+       
+  }
