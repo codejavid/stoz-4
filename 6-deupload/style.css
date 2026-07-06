@@ -106,10 +106,54 @@ header{
 }
 
 
+/* works */
+.works{
+    padding: 100px 0px;
+}
+
+.works .parent{
+    position: relative;
+}
+
+
+/* Ready */
+
+.ready{
+    padding: 100px 0px;
+}
+
+
+
 @media (min-width: 992px) {
+
+
     .pricing-wrapper > div > div:nth-child(2) > div{
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
-       }
+    }
+
+    .works .line{
+        position: absolute;
+        top: 35px;
+        left: 75%;
+    }
+
+    .works .line-v{
+        display: none;
+    }
+    
        
   }
+
+@media (max-width: 992px) {
+   
+.works .parent{
+    margin-bottom: 30px;
+}
+
+.works .line{
+    display: none;
+}
+     
+}
+
