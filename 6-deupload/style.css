@@ -8,6 +8,12 @@ a{
     text-decoration: none;
 }
 
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
 
 /* My Classes */
 .my-text-primary{
@@ -122,6 +128,30 @@ header{
     padding: 100px 0px;
 }
 
+/* Footer */
+
+footer a{
+    display: inline-block;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.my-m{
+    margin-bottom: 70px;
+}
+
+footer h5{
+    margin: 50px 0px;
+}
+
+footer img{
+    width: 18%;
+}
+
+footer i{
+    font-size: 30px;
+    /* color: green; */
+}
 
 
 @media (min-width: 992px) {
