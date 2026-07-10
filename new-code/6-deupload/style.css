@@ -1,0 +1,189 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* My Classes */
+.my-text-primary{
+    color: #651FFF;
+}
+
+h2{
+    font-weight: 700;
+}
+
+/* Header */
+header{
+    background-color: #ffffff;
+}
+
+/* Banner */
+.banner{
+    padding: 100px 0px;
+    background-color: #EBE5FA;
+}
+
+.banner h1{
+    
+    font-weight:700;
+    line-height: 60px;
+}
+
+/* Hero */
+.hero{
+    padding: 100px 0px;
+}
+
+/* Lightning */
+.lightning{
+    padding: 100px 0px;
+}
+
+.lightning-wrapper > div > div > div{
+    background-color: #651FFF;
+    padding: 60px 30px;
+    color: #ffffff;
+    border-radius: 30px;
+}
+
+.lightning-wrapper > div > div > div a{
+    color: #ffffff;
+}
+
+/* Team */
+.team{
+    padding: 100px 0px;
+}
+
+.team-wrapper > div > div > div{
+    text-align: center;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.team-wrapper > div > div:nth-child(1) > div{
+    background-color: #FFF7ED;
+}
+
+.team-wrapper > div > div:nth-child(2) > div{
+    background-color: #E0F7FA;
+}
+
+.collab{
+    background-color: #ECECFE;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+/* Privacy */
+
+.privacy{
+    padding: 100px 0px;
+}
+
+/* Pricing */
+.pricing{
+    padding: 100px 0px;
+    background:linear-gradient(to bottom, #00E5FF 55%, #ffffff 45%);
+}
+
+.pricing-wrapper > div > div:nth-child(1) > div{
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+
+.pricing-wrapper > div > div:nth-child(2) > div{
+ background-color: #651FFF;
+ color: #ffffff;
+ padding: 50px;
+}
+
+
+/* works */
+.works{
+    padding: 100px 0px;
+}
+
+.works .parent{
+    position: relative;
+}
+
+
+/* Ready */
+
+.ready{
+    padding: 100px 0px;
+}
+
+/* Footer */
+
+footer a{
+    display: inline-block;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.my-m{
+    margin-bottom: 70px;
+}
+
+footer h5{
+    margin: 50px 0px;
+}
+
+footer img{
+    width: 18%;
+}
+
+footer i{
+    font-size: 30px;
+    /* color: green; */
+}
+
+
+@media (min-width: 992px) {
+
+
+    .pricing-wrapper > div > div:nth-child(2) > div{
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .works .line{
+        position: absolute;
+        top: 35px;
+        left: 75%;
+    }
+
+    .works .line-v{
+        display: none;
+    }
+    
+       
+  }
+
+@media (max-width: 992px) {
+   
+.works .parent{
+    margin-bottom: 30px;
+}
+
+.works .line{
+    display: none;
+}
+     
+}
+
