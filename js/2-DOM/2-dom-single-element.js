@@ -17,10 +17,10 @@ taskTitle.style.padding = "10px";
 
 // Change content
 
-console.log(taskTitle.innerText);
+// console.log(taskTitle.innerText);
 
-taskTitle.innerText = "<span>Hai</span>";
-taskTitle.innerHTML = "<span>Hai</span>";
+taskTitle.innerText = "Hai";
+// taskTitle.innerHTML = "<span>Hai</span>";
 
 // document.querySelector()
 
