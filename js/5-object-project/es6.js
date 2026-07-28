@@ -45,13 +45,116 @@ class UI{
             targetElement.parentElement.remove();
         }
     }
+    
+    showAlert(message, className){
+        // console.log(message, className);
+
+        this.clearAlert();
+
+        // Create a div element
+
+        const div = document.createElement("div");
+
+        // Add class Name
+
+        div.className = `alert ${className}`;
+
+        // Add a inner text
+        div.innerText = message;
+
+        document.querySelector(".show-alert").appendChild(div);
+
+        setTimeout(function(){
+            document.querySelector(".alert").remove();
+        }, 3000)
+    }
 
     clearTasks(){
         document.querySelector("#book-list").innerHTML = "";
     }
+
+    clearAlert(){
+        const currentAlert = document.querySelector(".alert");
+
+        if(currentAlert){
+            currentAlert.remove();
+        }
+    }
     
 
 }
+
+
+class Stroage{
+
+    getBooks(){
+        let books;
+
+        if(localStorage.getItem("books") === null){
+            books = [];
+        }else{
+            books = JSON.parse(localStorage.getItem("books"));
+        }
+
+        return books;
+
+    }
+
+
+    addBooks(book){
+
+        // get a book array
+
+        const books = this.getBooks();
+
+        // Add book to array
+
+        books.push(book);
+
+        // Set in the local storage
+        localStorage.setItem("books", JSON.stringify(books));
+
+    }
+
+    displayBook(){
+
+        const books = this.getBooks();
+
+        const ui = new UI();
+
+        books.forEach(function(book){
+            ui.addBookToList(book);
+        })
+
+
+
+    }
+
+    deleteBooks(isbn){
+
+        const books = this.getBooks();
+
+        books.forEach(function(book, index){
+
+            if(book.isbn === isbn){
+                books.splice(index, 1);
+            }
+
+
+        })
+
+        localStorage.setItem("books", JSON.stringify(books));
+
+    }
+    clearBooks(){
+        localStorage.removeItem("books");
+    }
+
+}
+
+const storage = new Stroage();
+
+document.addEventListener("DOMContentLoaded", storage.displayBook());
 
 
 
@@ -68,19 +171,54 @@ document.querySelector("#book-form").addEventListener("submit", function (e) {
 
     const book = new Book(title, author, isbn);
     const ui = new UI();
+    const storage = new Stroage();
 
-    console.log(ui);
+
 
 
     if (title === "" || author === "" || isbn === "") {
-        alert("Please fill the form")
+        // alert("Please fill the form")
+        ui.showAlert("Please fill the fields", "alert-danger");
     } else {
 
-        // Add book to the list
-        ui.addBookToList(book);
 
-        // Clear Field
-        ui.clearFileds();
+        let bookExist = false;
+
+        const books = document.querySelectorAll("#book-list tr");
+
+        for(const bookRow of books){
+            
+            const existingTitle = bookRow.querySelector("td:nth-child(1)").innerText;
+            const existingIsbn = bookRow.querySelector("td:nth-child(3)").innerText;
+
+            if(existingTitle === title || existingIsbn === isbn){
+
+                bookExist = true;
+
+                break;
+            }
+
+        }
+
+
+        if(bookExist){
+            // Show alert
+            ui.showAlert("Book with the same name or isbn already exists", "alert-danger");
+        }else{
+             // Add book to the list
+            ui.addBookToList(book);
+
+            // Add to the storage
+            storage.addBooks(book);
+
+            // Show alert
+            ui.showAlert("Book added successfully", "alert-success");
+
+            // Clear Field
+            ui.clearFileds();
+        }
+
+       
     }
 
 });
@@ -90,16 +228,23 @@ document.querySelector("#book-form").addEventListener("submit", function (e) {
 
 document.querySelector("#book-list").addEventListener("click", function(e){
    
-    // console.log(e.target);
-    // console.log(e.target.parentElement);
     if(e.target.parentElement.className === "delete"){
-        // console.log("Yes")
+
 
         const ui = new UI();
 
-        // Delete Book
+        const storage = new Stroage();
+
+        const isbn = e.target.parentElement.previousElementSibling.innerText;
+
+  
 
         ui.deleteBook(e.target.parentElement);
+
+        storage.deleteBooks(isbn)
+
+        // Show alert
+        ui.showAlert("Book deleted successfully", "alert-success");
     }
 
 })
@@ -112,7 +257,11 @@ document.querySelector(".clear").addEventListener("click", function (e) {
 
     const ui = new UI();
 
+    const storage = new Stroage();
+
     ui.clearTasks();
+
+    storage.clearBooks();
 
 
 
