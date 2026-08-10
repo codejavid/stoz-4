@@ -1,43 +1,35 @@
-import React, { use } from 'react'
+import React, { useState } from 'react'
+import Header from './components/Header'
+import FeedbackList from './components/FeedbackList'
+
 
 const App = () => {
+
+  const [feedback, setFeedback] = useState(
+    [
+      {id:1, text:"This is a sample text 1"},
+      {id:2, text:"This is a sample text 2"},
+      {id:3, text:"This is a sample text 3"},
+    ]
+  )
   
-  const name = "javid";
-
-  const users = [
-    {id:1, text:"User 1"},
-    {id:2, text:"User 2"},
-    {id:3, text:"User 3"},
-  ]
-
-  const loading = false;
-
-  if(loading) return <h1>Loading</h1>
-
-  const showUser = true;
-
   return (
-   <div>
-     <h1>{name}</h1>
-     <h2>{5 + 5}</h2>
-
-
-     <h3>user length {users.length}</h3>
-
-     {/* {showUser ? (<ul>
-      {users.map((user) => (
-        <li key={user.id}>{user.text}</li>
-      ))}
-     </ul>) : null} */}
-
-     {showUser && (<ul>
-      {users.map((user) => (
-        <li key={user.id}>{user.text}</li>
-      ))}
-     </ul>)}
+    <div>
+      <Header/>
      
-   </div>
+     <div className='container'>
+       <FeedbackList feedback={feedback}/>
+     </div>
+
+     
+
+      
+
+    </div>
   )
 }
 
 export default App
+
+
+
