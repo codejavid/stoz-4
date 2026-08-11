@@ -2,8 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 
-const FeedbackItem = ({item}) => {
-
+const FeedbackItem = ({item, handleDelete}) => {
    
 
   return (
@@ -15,7 +14,7 @@ const FeedbackItem = ({item}) => {
 
            <div>
             <div className="edit"><FaEdit/></div>
-            <div className="delete"><MdDelete/></div>
+            <div className="delete"><MdDelete onClick={() => handleDelete(item.id)}/></div>
            </div>
         </div>
 

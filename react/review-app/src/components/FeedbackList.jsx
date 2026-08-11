@@ -2,7 +2,7 @@ import FeedbackItem from "./FeedbackItem"
 
 
 
-const FeedbackList = ({feedback}) => {
+const FeedbackList = ({feedback, handleDelete}) => {
 
 
 if(feedback.length === 0) return <h3>These is no items</h3>
@@ -10,7 +10,7 @@ if(feedback.length === 0) return <h3>These is no items</h3>
   return (
     <div>
         {feedback.map((item) => (
-          <FeedbackItem key={item.id} item={item}/>
+          <FeedbackItem key={item.id} item={item} handleDelete={handleDelete}/>
         ))}
     </div>
   )
