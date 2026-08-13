@@ -1,25 +1,30 @@
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
+import Card from "./shared/Card";
 
 const FeedbackItem = ({item, handleDelete}) => {
    
 
   return (
-    <div className='card'>
+    
+    <Card>
+      <div className='card-wrapper'>
 
-        <div className='card-wrapper'>
+      <h4>{item.text}</h4>
 
-           <h4>{item.text}</h4>
-
-           <div>
-            <div className="edit"><FaEdit/></div>
-            <div className="delete"><MdDelete onClick={() => handleDelete(item.id)}/></div>
-           </div>
+        <div>
+        <div className="edit"><FaEdit/></div>
+        <div className="delete"><MdDelete onClick={() => handleDelete(item.id)}/></div>
         </div>
+      </div>
+
+    </Card>
 
        
-    </div>
+
+       
+  
   )
 }
 

@@ -1,8 +1,13 @@
+import FeedbackContext from "../context/FeedbackContext"
 import FeedbackItem from "./FeedbackItem"
+import { useContext } from "react"
 
 
 
-const FeedbackList = ({feedback, handleDelete}) => {
+const FeedbackList = ({ handleDelete }) => {
+  
+
+  const {feedback} = useContext(FeedbackContext)
 
 
 if(feedback.length === 0) return <h3>These is no items</h3>

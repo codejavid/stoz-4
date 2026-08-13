@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import Card from './shared/Card';
+import Button from './shared/Button';
 
-const FeedbackForm = ({handleAdd}) => {
+const FeedbackForm = ({ handleAdd }) => {
 
 
   const [text, setText] = useState("");
@@ -15,14 +17,14 @@ const FeedbackForm = ({handleAdd}) => {
 
     let textError = "";
 
-    if(trimmedText.length < 10){
-       setMessage("Character must be at least 10")
-       setBtnDisable(true)
-    }else{
+    if (trimmedText.length < 10) {
+      setMessage("Character must be at least 10")
+      setBtnDisable(true)
+    } else {
       setMessage("");
       setBtnDisable(false)
     }
-  
+
     setText(trimmedText)
 
   }
@@ -31,28 +33,33 @@ const FeedbackForm = ({handleAdd}) => {
     e.preventDefault();
 
     const newFeedback = {
-      id:uuidv4(),
-      text:text
+      id: uuidv4(),
+      text: text
     }
 
     handleAdd(newFeedback)
 
     setText("");
+
+    setBtnDisable(true)
   }
 
   return (
-   <div className='card'>
-     <h3>Add your reviews</h3>
-     <form onSubmit={handleSubmit}>
+
+    <Card>
+
+      <h3>Add your reviews</h3>
+      <form onSubmit={handleSubmit}>
         <div className='input-group'>
-            <input type="text" placeholder='Enter your name'
-            onChange={handleTextChange} value={text}/>
-            <button disabled={btnDisable} className='btn btn-primary'>Send</button>
+          <input type="text" placeholder='Enter your name'
+            onChange={handleTextChange} value={text} />
+            <Button version="primary" type="submit" isDisabled={btnDisable}>Send</Button>
         </div>
 
         <p className='message'>{message}</p>
-     </form>
-   </div>
+      </form>
+    </Card>
+
   )
 }
 

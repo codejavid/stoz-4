@@ -41,3 +41,16 @@ const App = () => {
 }
 
 export default App
+
+
+  // const [count, setCount] = useState(1);
+
+  // useEffect(() => {
+  //   console.log("Hello");
+  // }, [count])
+
+  // const addNumber = () => {
+  //   setCount((prev) => prev + 1);
+  // }
+
+         {/* <button onClick={addNumber}>Add</button> */}

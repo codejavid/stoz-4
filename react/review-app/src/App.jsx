@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
 
 import FeedbackList from './components/FeedbackList'
 import FeedbackForm from './components/FeedbackForm'
+import FeedbackStats from './components/FeedbackStats'
+
+import FeedbackStatsInContext from './components/FeedbackStatsInContext'
 
 
 const App = () => {
@@ -23,6 +26,8 @@ const App = () => {
   const deleteFeedback = (id) => {
     setFeedback(feedback.filter(item => item.id !== id))
   }
+
+
   
   return (
     <div>
@@ -30,8 +35,14 @@ const App = () => {
      
      <div className='container'>
        <FeedbackForm handleAdd={addFeedback}/>
-       <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+       <FeedbackStats feedback={feedback}/>
+       <FeedbackStatsInContext/>
+       <FeedbackList handleDelete={deleteFeedback}/>
+
+        
+
      </div>
+
 
      
 
