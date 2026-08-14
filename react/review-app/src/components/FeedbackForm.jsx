@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import Card from './shared/Card';
 import Button from './shared/Button';
+import FeedbackContext from '../context/FeedbackContext';
 
-const FeedbackForm = ({ handleAdd }) => {
+
+const FeedbackForm = () => {
 
 
   const [text, setText] = useState("");
   const [btnDisable, setBtnDisable] = useState(true);
   const [message, setMessage] = useState("");
+
+  const {addFeedback, feedbackEdit, updateFeedback, setFeedbackEdit} = useContext(FeedbackContext);
 
   const handleTextChange = (e) => {
 
@@ -37,12 +41,29 @@ const FeedbackForm = ({ handleAdd }) => {
       text: text
     }
 
-    handleAdd(newFeedback)
+
+    if(feedbackEdit.edit === true){
+      updateFeedback(feedbackEdit.item.id, newFeedback);
+      setFeedbackEdit({
+        item:{},
+        edit:false
+      })
+    }else{
+      addFeedback(newFeedback)
+    }
+  
 
     setText("");
 
     setBtnDisable(true)
   }
+
+  useEffect(() => {
+    if(feedbackEdit.edit === true){
+      setBtnDisable(false);
+      setText(feedbackEdit.item.text)
+    }
+  }, [feedbackEdit])
 
   return (
 
@@ -53,7 +74,9 @@ const FeedbackForm = ({ handleAdd }) => {
         <div className='input-group'>
           <input type="text" placeholder='Enter your name'
             onChange={handleTextChange} value={text} />
-            <Button version="primary" type="submit" isDisabled={btnDisable}>Send</Button>
+            <Button version="primary" type="submit" isDisabled={btnDisable}>
+               {feedbackEdit.edit ? "update" : "send"}
+            </Button>
         </div>
 
         <p className='message'>{message}</p>

@@ -2,9 +2,14 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 import Card from "./shared/Card";
+import { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-const FeedbackItem = ({item, handleDelete}) => {
-   
+
+
+const FeedbackItem = ({item}) => {
+  
+  const { deleteFeedback, editFeedback } = useContext(FeedbackContext)
 
   return (
     
@@ -14,8 +19,8 @@ const FeedbackItem = ({item, handleDelete}) => {
       <h4>{item.text}</h4>
 
         <div>
-        <div className="edit"><FaEdit/></div>
-        <div className="delete"><MdDelete onClick={() => handleDelete(item.id)}/></div>
+        <div className="edit"><FaEdit onClick={() => editFeedback(item)}/></div>
+        <div className="delete"><MdDelete onClick={() => deleteFeedback(item.id)}/></div>
         </div>
       </div>
 

@@ -3,50 +3,43 @@ import Header from './components/Header'
 
 import FeedbackList from './components/FeedbackList'
 import FeedbackForm from './components/FeedbackForm'
-import FeedbackStats from './components/FeedbackStats'
+// import FeedbackStats from './components/FeedbackStats'
 
-import FeedbackStatsInContext from './components/FeedbackStatsInContext'
+import { Routes, Route } from 'react-router-dom'
+
+import About from "./pages/About"
+import Blog from "./pages/Blog"
 
 
 const App = () => {
 
-  const [feedback, setFeedback] = useState(
-    [
-      {id:1, text:"This is a sample text 1"},
-      {id:2, text:"This is a sample text 2"},
-      {id:3, text:"This is a sample text 3"},
-    ]
-  );
-
-  const addFeedback = (newFeedback) => {
-
-    setFeedback([newFeedback, ...feedback]);
-  }
-
-  const deleteFeedback = (id) => {
-    setFeedback(feedback.filter(item => item.id !== id))
-  }
-
-
-  
   return (
     <div>
-      <Header/>
-     
-     <div className='container'>
-       <FeedbackForm handleAdd={addFeedback}/>
-       <FeedbackStats feedback={feedback}/>
-       <FeedbackStatsInContext/>
-       <FeedbackList handleDelete={deleteFeedback}/>
+      <Header />
+      <div className='container'>
+        <Routes>
+          
+          <Route path='/' element={
+            <>
+              <FeedbackForm />
+              <FeedbackList />
+            </>
+          } />
 
-        
+          <Route path='/about' element={
+            <>
+              <About />
+            </>
+          } />
 
-     </div>
+          <Route path='/blog' element={
+            <>
+              <Blog />
+            </>
+          } />
 
-
-     
-
-      
+        </Routes>
+      </div>
 
     </div>
   )
