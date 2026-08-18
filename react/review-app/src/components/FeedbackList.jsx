@@ -10,7 +10,7 @@ const FeedbackList = () => {
   const { feedback } = useContext(FeedbackContext)
 
 
-if(feedback.length === 0) return <h3>These is no items</h3>
+if(feedback.length === 0) return <h3>No items</h3>
 
   return (
     <div>
