@@ -1,0 +1,48 @@
+.post__hero {
+  height: min(62vh, 520px);
+  overflow: hidden;
+}
+
+.post__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post__body {
+  max-width: 720px;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.post__body h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.post__meta {
+  color: #8a8379;
+  font-size: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.post__body p {
+  margin-bottom: 1.1rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.post__back {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.post.container {
+  padding-top: 4rem;
+}
+
+.post.container .btn {
+  margin-top: 1rem;
+}
