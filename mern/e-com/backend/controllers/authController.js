@@ -1,5 +1,13 @@
 import User from "../models/User.js";
+import jwt from "jsonwebtoken";
 
+// Token
+
+const generateToken = (id) => {
+  return jwt.sign({id}, process.env.JWT_SECRET, {
+    expiresIn: '30d'
+  })
+}
 
 
 // @desc Register user
@@ -21,12 +29,14 @@ export const registerUser = async (req, res) => {
       password: password,
     });
 
+
     if (user) {
       res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        token:generateToken(user._id)
       });
     } else {
       return res.status(400).json({ message: "Invalid user data" });
@@ -45,12 +55,13 @@ export const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (user) {
+    if (user && await user.matchPassword(password)) {
       res.status(200).json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        token:generateToken(user._id)
       });
     } else {
       return res.status(400).json({ message: "Invalid email or password" });
