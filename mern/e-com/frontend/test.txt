@@ -1,1 +1,0 @@
-check this all api keys in te backend and create a frontend for this with react and vite and tailwind v4, axios and for state managment use context api for statemanagment and keep the design simple and clean 
