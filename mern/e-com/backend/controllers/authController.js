@@ -70,3 +70,19 @@ export const loginUser = async (req, res) => {
     console.log(error.message);
   }
 };
+
+// @desc get a user profile
+// @route GET /api/auth/profile
+
+export const getUserProfile = async(req, res) => {
+
+  try {
+   
+    const user = await User.findById(req.user._id).select("-password")
+    res.json(user)
+
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+}

@@ -2,7 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { user } = useAuth();
+
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login")
+  }
+  
 
   return (
     <nav className="bg-blue-600 text-white shadow-xl">
@@ -18,9 +26,11 @@ const Navbar = () => {
 
             {user ? (
               <>
-                <Link to="/admin">Admin</Link>
-                <span className="text-sm">userName</span>
-                <button className="bg-red-500 px-3 py-1 rounded hover:bg-red-300">
+                {user.isAdmin && (
+                  <Link to="/admin">Admin</Link>
+                )}
+                <span className="text-sm">{user.name}</span>
+                <button onClick={handleLogout} className="bg-red-500 px-3 py-1 rounded hover:bg-red-300">
                   Logout
                 </button>
               </>
