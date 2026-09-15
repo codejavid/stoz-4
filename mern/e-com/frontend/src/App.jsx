@@ -12,12 +12,15 @@ import Navbar from "./components/Navbar"
 
 
 import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
+
 
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
+        <CartProvider>       
         <div className="min-h-screen bg-gray-100">
           <Navbar/>
            <Routes>
@@ -29,6 +32,7 @@ const App = () => {
              <Route path="*" element={<NotFound/>}/>
            </Routes>
         </div>
+         </CartProvider>
         </AuthProvider>
     </Router>
     
