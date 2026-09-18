@@ -46,7 +46,7 @@ const HomePage = () => {
             >
               <img
                 src={
-                  "https://thumbs.dreamstime.com/b/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available-236105299.jpg"
+                  product.image
                 }
                 alt={product.name}
                 className="w-full h-48 object-cover"

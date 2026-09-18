@@ -82,12 +82,9 @@ export const AuthProvider = ({children}) => {
     const fetchUserProfile = async() => {
 
         try{
-
-            console.log("hai")
             const { data } = await api.get("/auth/profile");
 
-            console.log("Hello")
-
+        
             setUser(data)
 
             
