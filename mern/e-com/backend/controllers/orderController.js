@@ -81,19 +81,19 @@ export const getOrdersById = async(req, res) => {
 // @desc Get all order
 // @route Post /api/orders
 
-export const getAllOrders = async(req, res) => {
+export const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("user");
 
-    try{
+    console.log(orders);
 
-        const orders = await Order.find({});
-        res.json(orders);
-       
+    res.json(orders);
 
-    }catch(error){
-        res.status(500).json({message:error.message})
-    }
-
-}
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 // @desc Update order status (admin only)
 // @route put /api/orders/:id/status

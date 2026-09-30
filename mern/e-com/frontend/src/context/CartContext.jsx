@@ -6,19 +6,17 @@ export const useCart = () => {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("UseAuth must be used within authprovider");
+    throw new Error("useCart must be used within CartProvider");
   }
 
   return context;
 };
 
 export const CartProvider = ({ children }) => {
-  // Load from localstroage only once
-
+  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState(() => {
     try {
       const savedCart = localStorage.getItem("cart");
-
       return savedCart ? JSON.parse(savedCart) : [];
     } catch (err) {
       console.log("Error loading cart", err);
@@ -26,11 +24,13 @@ export const CartProvider = ({ children }) => {
     }
   });
 
-  // Save whenever cart changes
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+  const toggleCart = () => setIsOpen((open) => !open);
 
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
@@ -60,6 +60,7 @@ export const CartProvider = ({ children }) => {
         },
       ];
     });
+    setIsOpen(true);
   };
 
   const updateQuantity = (productId, quantity) => {
@@ -87,6 +88,8 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const clearCart = () => setCartItems([]);
+
   const getTotalPrice = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -94,21 +97,22 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-
-   const getTotalItems = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.quantity,
-      0,
-    );
+  const getTotalItems = () => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
   const value = {
     cartItems,
     addToCart,
-    getTotalPrice,
     updateQuantity,
     removeFromCart,
+    clearCart,
     getTotalPrice,
+    getTotalItems,
+    isOpen,
+    openCart,
+    closeCart,
+    toggleCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

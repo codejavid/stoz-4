@@ -1,1 +1,108 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-surface: var(--surface);
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg: #f4efe6;
+  --ink: #161411;
+  --muted: #6f6a62;
+  --line: #d9d1c4;
+  --surface: #fbf8f2;
+  --accent: #c45c26;
+  --accent-ink: #fff8f0;
+}
+
+[data-theme="dark"] {
+  --bg: #12110f;
+  --ink: #efeae1;
+  --muted: #9a948a;
+  --line: #2c2a26;
+  --surface: #1c1a17;
+}
+
+[data-accent="ember"] {
+  --accent: #c45c26;
+  --accent-ink: #fff8f0;
+}
+
+[data-accent="sage"] {
+  --accent: #3d6b52;
+  --accent-ink: #f4faf6;
+}
+
+[data-accent="violet"] {
+  --accent: #6b4c9a;
+  --accent-ink: #f7f2ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.ticker-track {
+  animation: ticker 28s linear infinite;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: ticker 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-track,
+  .marquee-track {
+    animation: none;
+  }
+
+  body {
+    transition: none;
+  }
+}
