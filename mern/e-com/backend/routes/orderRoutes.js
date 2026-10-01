@@ -6,7 +6,7 @@ import { protect, admin } from "../middleware/authMiddleware.js"
 const router = express.Router();
 
 router.route("/")
-.post(protect,admin,createOrder)
+.post(protect,createOrder)
 .get(protect,admin,getAllOrders)
 
 router.get("/myorders", protect, getMyOrders)
