@@ -29,103 +29,159 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 right-0 left-0 z-[60] transition-colors ${
+      className={`fixed top-0 right-0 left-0 z-[60] transition-all duration-200 ${
         scrolled
-          ? "border-b border-line bg-bg/90 backdrop-blur-md"
-          : "bg-transparent"
+          ? "border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-sm"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-        <Link to="/" className="font-display text-2xl tracking-tight">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 md:px-8">
+        <Link to="/" className="text-xl font-bold tracking-tight text-blue-600">
           AETHER
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm tracking-widest uppercase md:flex">
-          <a href="/#shop">Shop</a>
-          {user?.isAdmin && <Link to="/admin">Atelier</Link>}
+        <div className="hidden items-center gap-1 md:flex">
+          <a
+            href="/#shop"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+          >
+            Shop
+          </a>
+          {user?.isAdmin && (
+            <Link
+              to="/admin"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            >
+              Admin
+            </Link>
+          )}
           {user ? (
             <>
-              <span className="max-w-32 truncate normal-case tracking-normal text-muted">
+              <Link
+                to="/orders"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              >
+                Orders
+              </Link>
+              <span className="max-w-32 truncate px-3 py-2 text-sm text-gray-400">
                 {user.name}
               </span>
-              <button type="button" onClick={handleLogout}>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              >
                 Logout
               </button>
             </>
           ) : (
-            <Link to="/login">Account</Link>
+            <Link
+              to="/login"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            >
+              Login
+            </Link>
           )}
-          <button type="button" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === "dark" ? "Light" : "Dark"}
-          </button>
-          <button type="button" onClick={togglePanel} aria-label="Open theme settings">
-            Theme
-          </button>
           <button
             type="button"
             onClick={toggleCart}
-            className="relative tracking-widest uppercase"
+            className="relative ml-2 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
           >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
             Bag
             {count > 0 && (
-              <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[10px] text-accent-ink">
+              <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-blue-600">
                 {count}
               </span>
             )}
           </button>
         </div>
 
-        <div className="flex items-center gap-4 md:hidden">
-          <button type="button" onClick={toggleCart} className="text-sm tracking-widest uppercase">
-            Bag {count > 0 ? `(${count})` : ""}
+        <div className="flex items-center gap-3 md:hidden">
+          <button
+            type="button"
+            onClick={toggleCart}
+            className="relative inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white"
+          >
+            Bag
+            {count > 0 && (
+              <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-blue-600">
+                {count}
+              </span>
+            )}
           </button>
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="text-sm tracking-widest uppercase"
+            className="rounded-lg p-2 text-gray-600 hover:bg-gray-50"
+            aria-label="Toggle menu"
           >
-            {menuOpen ? "Close" : "Menu"}
+            {menuOpen ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            )}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-line bg-bg px-5 py-6 md:hidden">
-          <div className="flex flex-col gap-4 text-sm tracking-widest uppercase">
-            <a href="/#shop" onClick={() => setMenuOpen(false)}>
+        <div className="border-t border-gray-100 bg-white px-5 py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            <a
+              href="/#shop"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
               Shop
             </a>
             {user?.isAdmin && (
-              <Link to="/admin" onClick={() => setMenuOpen(false)}>
-                Atelier
+              <Link
+                to="/admin"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Admin
               </Link>
             )}
             {user ? (
-              <button type="button" className="text-left" onClick={handleLogout}>
-                Logout
-              </button>
+              <>
+                <Link
+                  to="/orders"
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  Orders
+                </Link>
+                <button
+                  type="button"
+                  className="rounded-lg px-3 py-2.5 text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
             ) : (
-              <Link to="/login" onClick={() => setMenuOpen(false)}>
-                Account
+              <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Login
               </Link>
             )}
-            <button type="button" className="text-left" onClick={toggleTheme}>
-              {theme === "dark" ? "Light mode" : "Dark mode"}
-            </button>
-            <button
-              type="button"
-              className="text-left"
-              onClick={() => {
-                setMenuOpen(false);
-                togglePanel();
-              }}
-            >
-              Theme
-            </button>
           </div>
         </div>
       )}
-      <AnnouncementTicker />
+      {/* <AnnouncementTicker /> */}
     </nav>
   );
 };

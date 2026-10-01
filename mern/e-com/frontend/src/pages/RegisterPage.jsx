@@ -40,85 +40,81 @@ const RegisterPage = () => {
 
   return (
     <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
-      <div className="hidden flex-col justify-end bg-surface px-12 py-16 md:flex">
-        <p className="text-xs tracking-[0.35em] text-muted uppercase">Join</p>
-        <p className="font-display mt-4 text-5xl leading-tight">
-          Begin the archive.
+      <div className="hidden flex-col justify-center bg-blue-600 px-12 py-16 md:flex">
+        <p className="text-xs font-medium tracking-widest text-blue-200 uppercase">New here?</p>
+        <p className="mt-4 text-4xl font-bold leading-tight text-white">
+          Create your account
+        </p>
+        <p className="mt-3 text-blue-200">
+          Join to track orders, save favourites, and checkout faster.
         </p>
       </div>
-      <div className="flex items-center px-6 pt-28 pb-16 md:px-16">
-        <div className="w-full max-w-md">
-          <h1 className="font-display text-4xl">Create account</h1>
+      <div className="flex items-center justify-center bg-white px-6 pt-28 pb-16 md:px-16">
+        <div className="w-full max-w-sm">
+          <h1 className="text-2xl font-bold text-gray-900">Create account</h1>
+          <p className="mt-1 text-sm text-gray-400">Fill in your details to get started</p>
           {error && (
-            <div className="mt-4 border border-accent px-4 py-2 text-sm text-accent">
+            <div className="mt-4 rounded-lg border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
               {String(error)}
             </div>
           )}
-          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
-              <label className="mb-2 block text-xs tracking-widest uppercase">
-                Full name
-              </label>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Full name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-line bg-transparent px-3 py-3 outline-none focus:border-accent"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 required
-                placeholder="Enter your name"
+                placeholder="Your full name"
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs tracking-widest uppercase">
-                Email address
-              </label>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Email address</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-line bg-transparent px-3 py-3 outline-none focus:border-accent"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 required
-                placeholder="Enter your email"
+                placeholder="you@example.com"
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs tracking-widest uppercase">
-                Password
-              </label>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-line bg-transparent px-3 py-3 outline-none focus:border-accent"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 required
-                placeholder="Create a password"
+                placeholder="Min. 6 characters"
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs tracking-widest uppercase">
-                Confirm password
-              </label>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Confirm password</label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full border border-line bg-transparent px-3 py-3 outline-none focus:border-accent"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 required
-                placeholder="Confirm your password"
+                placeholder="Repeat password"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-accent py-3 text-xs tracking-[0.28em] text-accent-ink uppercase disabled:opacity-50"
+              className="w-full rounded-lg bg-blue-600 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Creating account..." : "Register"}
+              {loading ? "Creating account..." : "Create account"}
             </button>
           </form>
-          <p className="mt-6 text-sm text-muted">
+          <p className="mt-5 text-sm text-gray-400">
             Already have an account?{" "}
-            <Link to="/login" className="text-ink underline">
-              Login here
+            <Link to="/login" className="font-medium text-blue-600 hover:text-blue-700">
+              Sign in
             </Link>
           </p>
         </div>

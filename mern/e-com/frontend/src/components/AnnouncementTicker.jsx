@@ -8,7 +8,7 @@ const AnnouncementTicker = () => {
   const loop = [...phrases, ...phrases];
 
   return (
-    <div className="overflow-hidden border-b border-line py-2 text-[11px] tracking-[0.28em] text-muted uppercase">
+    <div className="overflow-hidden border-b border-gray-100 bg-blue-50 py-2 text-[11px] font-medium tracking-[0.2em] text-blue-500 uppercase">
       <div className="ticker-track flex w-max gap-12">
         {loop.map((text, i) => (
           <span key={`${text}-${i}`}>{text} —</span>
